@@ -98,11 +98,11 @@ func main() {
 				}
 			}
 		}
-		fmt.Println("Unauthorized SYN scanners:")
+		// the set
+		// of IP addresses (one per line) that sent more than 3 times as many SYN packets as the number of
+		// SYN+ACK packets they received and also sent more than 5 SYN packets in total.
+		fmt.Println("Unauthorized SYN scanners:")			
 		for ip, addr := range addresses { // Print syn scanners
-			// the set
-			// of IP addresses (one per line) that sent more than 3 times as many SYN packets as the number of
-			// SYN+ACK packets they received and also sent more than 5 SYN packets in total.
 			if sentSynCount, receivedSynAckCount := addr[0], addr[1]; sentSynCount > 5 && sentSynCount > receivedSynAckCount*3 {
 				fmt.Println(ip)
 			}
